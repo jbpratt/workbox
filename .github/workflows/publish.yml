@@ -1,0 +1,38 @@
+name: Build and publish latest image
+on:
+  push:
+
+env:
+  IMAGE_NAME: ghcr.io/jbpratt/toolbox/workbox
+  IMAGE_TAG: latest
+
+jobs:
+  build-and-publish:
+    name: Build and push workbox image
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Log in to ghcr.io
+      uses: redhat-actions/podman-login@v1
+      with:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+
+    - name: Buildah Action
+      id: build-image
+      uses: redhat-actions/buildah-build@v2
+      with:
+        image: ${{ env.IMAGE_NAME }}
+        tags: ${{ env.IMAGE_TAG }}
+        oci: true
+        dockerfiles: |
+          ./Containerfile
+
+    - name: Push to ghcr
+      uses: redhat-actions/push-to-registry@v2
+      with:
+        image: ${{ steps.build-image.outputs.image }}
+        tags: ${{ steps.build-image.outputs.tags }}
+        registry: ghcr.io
