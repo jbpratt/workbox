@@ -22,6 +22,7 @@ RUN : \
     bat \
     lsd \
     fzf \
+    gojq \
     ripgrep \
     python3-devel \
     gcc \
@@ -54,6 +55,13 @@ RUN : \
   && unzip awscli-exe-linux-x86_64.zip \
   && ./aws/install \
   && aws --version \
+  && :
+
+RUN : \
+  && curl -LO https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.9.1/cloud-nuke_linux_amd64 \
+  && chmod +x cloud-nuke_linux_amd64 \
+  && mv cloud-nuke_linux_amd64 /usr/local/bin/ \
+  && cloud-nuke --version
   && :
 
 ENV PATH="/usr/libexec/toolbox:/usr/libexec:$PATH"
