@@ -22,6 +22,15 @@ RUN : \
     bat \
     lsd \
     fzf \
+    ripgrep \
+    python3-devel \
+    gcc \
+    make \
+    automake \
+    gcc \
+    gcc-c++ \
+    kernel-devel \
+    cmake \
   && dnf clean all \
   && :
 
