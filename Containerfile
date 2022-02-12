@@ -16,26 +16,29 @@ RUN : \
 RUN : \
   && dnf update -y \
   && dnf install -y \
-    neovim \
-    starship \
-    shfmt \
-    bat \
-    lsd \
-    fzf \
-    gojq \
-    ripgrep \
-    python3-devel \
-    gcc \
-    make \
+    ShellCheck \
     automake \
+    bat \
+    cmake \
+    fzf \
+    gcc \
     gcc \
     gcc-c++ \
+    git \
+    gojq \
+    golang \
+    jq \
     kernel-devel \
-    cmake \
+    lsd \
+    make \
+    neovim \
+    python3-devel \
+    ripgrep \
+    shfmt \
+    starship \
+    vault \
   && dnf clean all \
   && :
-
-# RUN curl -sSL https://sdk.cloud.google.com | bash
 
 RUN : \
   && curl -LO https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz \
@@ -45,7 +48,7 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/openshift-online/ocm-cli/releases/download/v0.1.60/ocm-linux-amd64 \
+  && curl -LO https://github.com/openshift-online/ocm-cli/releases/download/v0.1.61/ocm-linux-amd64 \
   && install -Dm755 ocm-linux-amd64 /usr/bin/ocm \
   && ocm version \
   && :
@@ -58,10 +61,15 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.9.1/cloud-nuke_linux_amd64 \
-  && chmod +x cloud-nuke_linux_amd64 \
-  && mv cloud-nuke_linux_amd64 /usr/local/bin/ \
-  && cloud-nuke --version
+  && curl -LO https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.10.0/cloud-nuke_linux_amd64 \
+  && install -Dm755 cloud-nuke_linux_amd64 /usr/bin/cloud-nuke \
+  && cloud-nuke --version \
+  && :
+
+RUN : \
+  && curl -LO https://github.com/openshift/rosa/releases/download/v1.1.9/rosa-linux-amd64 \
+  && install -Dm755 rosa-linux-amd64 /usr/bin/rosa \
+  && rosa version \
   && :
 
 ENV PATH="/usr/libexec/toolbox:/usr/libexec:$PATH"
