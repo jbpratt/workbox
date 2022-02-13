@@ -20,6 +20,7 @@ RUN : \
     automake \
     bat \
     cmake \
+    dnf-plugins-core \
     fzf \
     gcc \
     gcc \
@@ -36,7 +37,6 @@ RUN : \
     ripgrep \
     shfmt \
     starship \
-    vault \
   && dnf clean all \
   && :
 
@@ -70,6 +70,13 @@ RUN : \
   && curl -LO https://github.com/openshift/rosa/releases/download/v1.1.9/rosa-linux-amd64 \
   && install -Dm755 rosa-linux-amd64 /usr/bin/rosa \
   && rosa version \
+  && :
+
+RUN : \
+  && curl -LO https://releases.hashicorp.com/vault/1.9.3/vault_1.9.3_linux_amd64.zip \
+  && unzip vault_1.9.3_linux_amd64.zip \
+  && install -Dm755 vault /usr/bin/vault \
+  && vault --version \
   && :
 
 ENV PATH="/usr/libexec/toolbox:/usr/libexec:$PATH"
