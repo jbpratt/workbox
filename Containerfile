@@ -7,6 +7,7 @@ RUN : \
   && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/flatpak \
   && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/virsh \
   && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/podman \
+  && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/skopeo \
   && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/virt-install \
   && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/rpm-ostree \
   && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/ostree \
@@ -23,7 +24,6 @@ RUN : \
     dnf-plugins-core \
     fzf \
     gcc \
-    gcc \
     gcc-c++ \
     git \
     gojq \
@@ -33,12 +33,18 @@ RUN : \
     lsd \
     make \
     neovim \
+    openssl \
     python3-devel \
     ripgrep \
     shfmt \
     starship \
   && dnf clean all \
   && :
+
+ENV OCM_VERSION="v0.1.61"
+ENV CLOUD_NUKE_VERSION="v0.10.0"
+ENV ROSA_VERSION="v1.1.9"
+ENV VAULT_VERSION="1.9.3"
 
 RUN : \
   && curl -LO https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz \
@@ -48,7 +54,7 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/openshift-online/ocm-cli/releases/download/v0.1.61/ocm-linux-amd64 \
+  && curl -LO https://github.com/openshift-online/ocm-cli/releases/download/"${OCM_VERSION}"/ocm-linux-amd64 \
   && install -Dm755 ocm-linux-amd64 /usr/bin/ocm \
   && ocm version \
   && :
@@ -61,20 +67,20 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.10.0/cloud-nuke_linux_amd64 \
+  && curl -LO https://github.com/gruntwork-io/cloud-nuke/releases/download/"${CLOUD_NUKE_VERSION}"/cloud-nuke_linux_amd64 \
   && install -Dm755 cloud-nuke_linux_amd64 /usr/bin/cloud-nuke \
   && cloud-nuke --version \
   && :
 
 RUN : \
-  && curl -LO https://github.com/openshift/rosa/releases/download/v1.1.9/rosa-linux-amd64 \
+  && curl -LO https://github.com/openshift/rosa/releases/download/"${ROSA_VERSION}"/rosa-linux-amd64 \
   && install -Dm755 rosa-linux-amd64 /usr/bin/rosa \
   && rosa version \
   && :
 
 RUN : \
-  && curl -LO https://releases.hashicorp.com/vault/1.9.3/vault_1.9.3_linux_amd64.zip \
-  && unzip vault_1.9.3_linux_amd64.zip \
+  && curl -LO https://releases.hashicorp.com/vault/"${VAULT_VERSION}"/vault_"${VAULT_VERSION}"_linux_amd64.zip \
+  && unzip vault_"${VAULT_VERSION}"_linux_amd64.zip \
   && install -Dm755 vault /usr/bin/vault \
   && vault --version \
   && :
