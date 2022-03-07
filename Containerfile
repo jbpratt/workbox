@@ -44,7 +44,7 @@ RUN : \
 ENV OCM_VERSION="v0.1.62"
 ENV CLOUD_NUKE_VERSION="v0.10.0"
 ENV ROSA_VERSION="v1.1.9"
-ENV VAULT_VERSION="1.9.3"
+ENV VAULT_VERSION="1.9.4"
 
 RUN : \
   && curl -LO https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz \
