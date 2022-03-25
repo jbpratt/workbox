@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-toolbox:35
+FROM registry.fedoraproject.org/fedora-toolbox:37
 
 RUN : \
   && mkdir /usr/libexec/toolbox \
