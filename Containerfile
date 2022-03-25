@@ -86,4 +86,12 @@ RUN : \
   && vault --version \
   && :
 
+RUN : \
+  && git clone https://github.com/holygeek/git-number.git \
+  && pushd git-number \
+  && make install \
+  && popd \
+  && rm -rf git-number/ \
+  && :
+
 ENV PATH="/usr/libexec/toolbox:/usr/libexec:$PATH"
