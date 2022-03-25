@@ -41,11 +41,6 @@ RUN : \
   && dnf clean all \
   && :
 
-ENV OCM_VERSION="v0.1.62"
-ENV CLOUD_NUKE_VERSION="v0.11.3"
-ENV ROSA_VERSION="v1.1.11"
-ENV VAULT_VERSION="1.9.4"
-
 RUN : \
   && curl -LO https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz \
   && tar xzvf oc.tar.gz -C /usr/local/bin/ \
@@ -54,7 +49,7 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/openshift-online/ocm-cli/releases/download/${OCM_VERSION}/ocm-linux-amd64 \
+  && curl -LO https://github.com/openshift-online/ocm-cli/releases/download/v0.1.62/ocm-linux-amd64 \
   && install -Dm755 ocm-linux-amd64 /usr/bin/ocm \
   && rm ocm-linux-amd64 \
   && ocm version \
@@ -69,19 +64,20 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/gruntwork-io/cloud-nuke/releases/download/${CLOUD_NUKE_VERSION}/cloud-nuke_linux_amd64 \
+  && curl -LO https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.11.3/cloud-nuke_linux_amd64 \
   && install -Dm755 cloud-nuke_linux_amd64 /usr/bin/cloud-nuke \
   && rm cloud-nuke_linux_amd64 \
   && cloud-nuke --version \
   && :
 
 RUN : \
-  && curl -LO https://github.com/openshift/rosa/releases/download/${ROSA_VERSION}/rosa-linux-amd64 \
+  && curl -LO https://github.com/openshift/rosa/releases/download/v1.1.11/rosa-linux-amd64 \
   && install -Dm755 rosa-linux-amd64 /usr/bin/rosa \
   && rm rosa-linux-amd64 \
   && rosa version \
   && :
 
+ENV VAULT_VERSION="1.9.4"
 RUN : \
   && curl -LO https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip \
   && unzip vault_${VAULT_VERSION}_linux_amd64.zip \

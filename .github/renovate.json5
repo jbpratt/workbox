@@ -1,0 +1,24 @@
+{
+  "enabled": true,
+  "timezone": "America/Chicago",
+  "semanticCommits": "enabled",
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "suppressNotifications": ["prIgnoreNotification"],
+  "docker": {
+    "fileMatch": ["Containerfile"]
+  },
+  "regexManagers": [
+    {
+      "fileMatch": [
+        "Containerfile",
+      ],
+      "matchStrings": [
+        "https:\/\/github.com\/(?<org>.*=?)\/(?<repo>.*=?)\/releases\/download\/(?<currentValue>.*=?)\/.*"
+      ],
+      "datasourceTemplate": "github-releases",
+      "depNameTemplate": "{{org}}/{{repo}}"
+    }
+  ],
+  "packageRules": []
+}
