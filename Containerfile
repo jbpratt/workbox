@@ -64,7 +64,7 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.11.8/cloud-nuke_linux_amd64 \
+  && curl -LO https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.12.0/cloud-nuke_linux_amd64 \
   && install -Dm755 cloud-nuke_linux_amd64 /usr/bin/cloud-nuke \
   && rm cloud-nuke_linux_amd64 \
   && cloud-nuke --version \
