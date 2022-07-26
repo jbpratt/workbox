@@ -42,7 +42,7 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz \
+  && curl -LO https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz \
   && tar xzvf oc.tar.gz -C /usr/local/bin/ \
   && rm -rf oc.tar.gz \
   && oc version \
