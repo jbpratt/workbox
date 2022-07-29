@@ -1,18 +1,5 @@
 FROM registry.fedoraproject.org/fedora-toolbox:36
 
-RUN : \
-  && mkdir /usr/libexec/toolbox \
-  && printf '#!/bin/bash \n# https://github.com/containers/toolbox/issues/145 \nexecutable=$(basename "$0") \nexec flatpak-spawn --host --watch-bus --forward-fd=1 --forward-fd=2 --directory="$(pwd)" --env=TERM=xterm-256color "$executable" "$@"' >/usr/libexec/toolbox/host-runner \
-  && chmod +x /usr/libexec/toolbox/host-runner \
-  && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/flatpak \
-  && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/virsh \
-  && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/podman \
-  && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/skopeo \
-  && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/virt-install \
-  && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/rpm-ostree \
-  && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/ostree \
-  && ln -s /usr/libexec/toolbox/host-runner /usr/libexec/nmcli \
-  && :
 
 RUN : \
   && dnf update -y \
@@ -39,6 +26,12 @@ RUN : \
     shfmt \
     starship \
   && dnf clean all \
+  && :
+
+RUN : \
+  && curl -LO https://github.com/1player/host-spawn/releases/download/1.2.0/host-spawn-x86_64 \
+  && install -Dm755 host-spawn-x86_64 /usr/bin/host-spawn \
+  && host-spawn --version \
   && :
 
 RUN : \
@@ -92,6 +85,18 @@ RUN : \
   && make install \
   && popd \
   && rm -rf git-number/ \
+  && :
+
+RUN : \
+  && mkdir /usr/libexec/toolbox \
+  && ln -s /usr/bin/host-spawn /usr/libexec/flatpak \
+  && ln -s /usr/bin/host-spawn /usr/libexec/virsh \
+  && ln -s /usr/bin/host-spawn /usr/libexec/podman \
+  && ln -s /usr/bin/host-spawn /usr/libexec/skopeo \
+  && ln -s /usr/bin/host-spawn /usr/libexec/virt-install \
+  && ln -s /usr/bin/host-spawn /usr/libexec/rpm-ostree \
+  && ln -s /usr/bin/host-spawn /usr/libexec/ostree \
+  && ln -s /usr/bin/host-spawn /usr/libexec/nmcli \
   && :
 
 ENV PATH="/usr/libexec/toolbox:/usr/libexec:$PATH"
