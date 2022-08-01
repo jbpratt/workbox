@@ -97,6 +97,7 @@ RUN : \
   && ln -s /usr/bin/host-spawn /usr/libexec/rpm-ostree \
   && ln -s /usr/bin/host-spawn /usr/libexec/ostree \
   && ln -s /usr/bin/host-spawn /usr/libexec/nmcli \
+  && ln -s /usr/bin/host-spawn /usr/libexec/openvpn \
   && :
 
 ENV PATH="/usr/libexec/toolbox:/usr/libexec:$PATH"
