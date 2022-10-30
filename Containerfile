@@ -25,6 +25,8 @@ RUN : \
     ripgrep \
     shfmt \
     starship \
+    htop \
+    gh \
   && dnf clean all \
   && :
 
