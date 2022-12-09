@@ -24,10 +24,14 @@ RUN : \
     python3-devel \
     ripgrep \
     shfmt \
-    starship \
     htop \
     gh \
   && dnf clean all \
+  && :
+
+RUN : \
+  && dnf copr enable -y atim/starship \
+  && dnf install -y starship \
   && :
 
 RUN : \
