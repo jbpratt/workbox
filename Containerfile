@@ -35,7 +35,7 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/1player/host-spawn/releases/download/1.4.1/host-spawn-x86_64 \
+  && curl -LO https://github.com/1player/host-spawn/releases/download/1.4.2/host-spawn-x86_64 \
   && install -Dm755 host-spawn-x86_64 /usr/bin/host-spawn \
   && host-spawn --version \
   && :
