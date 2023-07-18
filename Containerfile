@@ -70,7 +70,7 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/openshift/rosa/releases/download/v1.2.22/rosa-linux-amd64 \
+  && curl -LO https://github.com/openshift/rosa/releases/download/v1.2.24/rosa-linux-amd64 \
   && install -Dm755 rosa-linux-amd64 /usr/bin/rosa \
   && rm rosa-linux-amd64 \
   && rosa version \
