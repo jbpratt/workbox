@@ -94,6 +94,12 @@ RUN : \
   && :
 
 RUN : \
+  && curl -LO curl -Lo ./kind https://github.com/kubernetes-sigs/kind/releases/download/v0.20.0/kind-linux-amd64 \
+  && chmod +x ./kind
+  && mv ./kind /usr/local/bin/kind
+  && :
+
+RUN : \
   && mkdir /usr/libexec/toolbox \
   && ln -s /usr/bin/host-spawn /usr/libexec/flatpak \
   && ln -s /usr/bin/host-spawn /usr/libexec/virsh \
