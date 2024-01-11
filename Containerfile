@@ -9,12 +9,15 @@ RUN : \
     bat \
     cmake \
     dnf-plugins-core \
+    fd-find \
     fzf \
     gcc \
     gcc-c++ \
+    gh \
     git \
     gojq \
     golang \
+    htop \
     jq \
     kernel-devel \
     lsd \
@@ -24,8 +27,6 @@ RUN : \
     python3-devel \
     ripgrep \
     shfmt \
-    htop \
-    gh \
   && dnf clean all \
   && :
 
