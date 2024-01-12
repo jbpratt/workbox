@@ -24,6 +24,7 @@ RUN : \
     make \
     neovim \
     openssl \
+    parallel \
     python3-devel \
     ripgrep \
     shfmt \
