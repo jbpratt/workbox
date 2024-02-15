@@ -96,7 +96,7 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/kubernetes-sigs/kind/releases/download/v0.20.0/kind-linux-amd64 \
+  && curl -LO https://github.com/kubernetes-sigs/kind/releases/download/v0.22.0/kind-linux-amd64 \
   && install -Dm755 kind-linux-amd64 /usr/bin/kind \
   && rm kind-linux-amd64 \
   && kind version \
