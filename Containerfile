@@ -64,20 +64,13 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.32.0/cloud-nuke_linux_amd64 \
-  && install -Dm755 cloud-nuke_linux_amd64 /usr/bin/cloud-nuke \
-  && rm cloud-nuke_linux_amd64 \
-  && cloud-nuke --version \
-  && :
-
-RUN : \
   && curl -LO https://github.com/openshift/rosa/releases/download/v1.2.36/rosa-linux-amd64 \
   && install -Dm755 rosa-linux-amd64 /usr/bin/rosa \
   && rm rosa-linux-amd64 \
   && rosa version \
   && :
 
-ENV VAULT_VERSION="1.12.0"
+ENV VAULT_VERSION="1.15.6"
 RUN : \
   && curl -LO https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip \
   && unzip vault_${VAULT_VERSION}_linux_amd64.zip \
