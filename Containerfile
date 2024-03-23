@@ -88,13 +88,6 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/kubernetes-sigs/kind/releases/download/v0.22.0/kind-linux-amd64 \
-  && install -Dm755 kind-linux-amd64 /usr/bin/kind \
-  && rm kind-linux-amd64 \
-  && kind version \
-  && :
-
-RUN : \
   && mkdir /usr/libexec/toolbox \
   && ln -s /usr/bin/host-spawn /usr/libexec/flatpak \
   && ln -s /usr/bin/host-spawn /usr/libexec/virsh \
@@ -105,6 +98,7 @@ RUN : \
   && ln -s /usr/bin/host-spawn /usr/libexec/ostree \
   && ln -s /usr/bin/host-spawn /usr/libexec/nmcli \
   && ln -s /usr/bin/host-spawn /usr/libexec/openvpn \
+  && ln -s /usr/bin/host-spawn /usr/libexec/kind \
   && :
 
 ENV PATH="/usr/libexec/toolbox:/usr/libexec:$PATH"
