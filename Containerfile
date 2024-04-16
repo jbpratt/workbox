@@ -37,7 +37,7 @@ RUN : \
 
 RUN : \
   && curl -LO https://github.com/1player/host-spawn/releases/download/v1.5.1/host-spawn-x86_64 \
-  && install -Dm755 host-spawn-x86_64 /usr/bin/host-spawn \
+  && install -Dm755 host-spawn-x86_64 /usr/local/bin/host-spawn \
   && host-spawn --version \
   && :
 
@@ -50,7 +50,7 @@ RUN : \
 
 RUN : \
   && curl -LO https://github.com/openshift-online/ocm-cli/releases/download/v0.1.73/ocm-linux-amd64 \
-  && install -Dm755 ocm-linux-amd64 /usr/bin/ocm \
+  && install -Dm755 ocm-linux-amd64 /usr/local/bin/ocm \
   && rm ocm-linux-amd64 \
   && ocm version \
   && :
@@ -65,18 +65,9 @@ RUN : \
 
 RUN : \
   && curl -LO https://github.com/openshift/rosa/releases/download/v1.2.36/rosa-linux-amd64 \
-  && install -Dm755 rosa-linux-amd64 /usr/bin/rosa \
+  && install -Dm755 rosa-linux-amd64 /usr/local/bin/rosa \
   && rm rosa-linux-amd64 \
   && rosa version \
-  && :
-
-ENV VAULT_VERSION="1.15.6"
-RUN : \
-  && curl -LO https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip \
-  && unzip vault_${VAULT_VERSION}_linux_amd64.zip \
-  && install -Dm755 vault /usr/bin/vault \
-  && rm -rf vault vault_${VAULT_VERSION}_linux_amd64.zip \
-  && vault --version \
   && :
 
 RUN : \
@@ -96,17 +87,17 @@ RUN : \
 
 RUN : \
   && mkdir /usr/libexec/toolbox \
-  && ln -s /usr/bin/host-spawn /usr/libexec/flatpak \
-  && ln -s /usr/bin/host-spawn /usr/libexec/virsh \
-  && ln -s /usr/bin/host-spawn /usr/libexec/podman \
-  && ln -s /usr/bin/host-spawn /usr/libexec/skopeo \
-  && ln -s /usr/bin/host-spawn /usr/libexec/virt-install \
-  && ln -s /usr/bin/host-spawn /usr/libexec/rpm-ostree \
-  && ln -s /usr/bin/host-spawn /usr/libexec/ostree \
-  && ln -s /usr/bin/host-spawn /usr/libexec/nmcli \
-  && ln -s /usr/bin/host-spawn /usr/libexec/openvpn \
-  && ln -s /usr/bin/host-spawn /usr/libexec/kind \
-  && ln -s /usr/bin/host-spawn /usr/libexec/sshuttle \
+  && ln -s /usr/local/bin/host-spawn /usr/libexec/flatpak \
+  && ln -s /usr/local/bin/host-spawn /usr/libexec/virsh \
+  && ln -s /usr/local/bin/host-spawn /usr/libexec/podman \
+  && ln -s /usr/local/bin/host-spawn /usr/libexec/skopeo \
+  && ln -s /usr/local/bin/host-spawn /usr/libexec/virt-install \
+  && ln -s /usr/local/bin/host-spawn /usr/libexec/rpm-ostree \
+  && ln -s /usr/local/bin/host-spawn /usr/libexec/ostree \
+  && ln -s /usr/local/bin/host-spawn /usr/libexec/nmcli \
+  && ln -s /usr/local/bin/host-spawn /usr/libexec/openvpn \
+  && ln -s /usr/local/bin/host-spawn /usr/libexec/kind \
+  && ln -s /usr/local/bin/host-spawn /usr/libexec/sshuttle \
   && :
 
 ENV PATH="/usr/libexec/toolbox:/usr/libexec:$PATH"
