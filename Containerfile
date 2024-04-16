@@ -88,6 +88,13 @@ RUN : \
   && :
 
 RUN : \
+  && curl -LO https://github.com/openshift/osdctl/releases/download/v0.29.0/osdctl_0.29.0_Linux_x86_64.tar.gz \
+  && tar xzvf osdctl_0.29.0_Linux_x86_64.tar.gz -C /usr/local/bin/ \
+  && rm -rf osdctl_0.29.0_Linux_x86_64.tar.gz \
+  && osdctl version \
+  && :
+
+RUN : \
   && mkdir /usr/libexec/toolbox \
   && ln -s /usr/bin/host-spawn /usr/libexec/flatpak \
   && ln -s /usr/bin/host-spawn /usr/libexec/virsh \
@@ -99,6 +106,7 @@ RUN : \
   && ln -s /usr/bin/host-spawn /usr/libexec/nmcli \
   && ln -s /usr/bin/host-spawn /usr/libexec/openvpn \
   && ln -s /usr/bin/host-spawn /usr/libexec/kind \
+  && ln -s /usr/bin/host-spawn /usr/libexec/sshuttle \
   && :
 
 ENV PATH="/usr/libexec/toolbox:/usr/libexec:$PATH"
