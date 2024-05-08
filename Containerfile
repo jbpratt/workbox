@@ -49,6 +49,13 @@ RUN : \
   && :
 
 RUN : \
+  && curl -LO https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/opm-linux.tar.gz \
+  && tar xzvf opm-linux.tar.gz -C /usr/local/bin/ \
+  && rm -rf opm-linux.tar.gz \
+  && opm version \
+  && :
+
+RUN : \
   && curl -LO https://github.com/openshift-online/ocm-cli/releases/download/v0.1.73/ocm-linux-amd64 \
   && install -Dm755 ocm-linux-amd64 /usr/local/bin/ocm \
   && rm ocm-linux-amd64 \
