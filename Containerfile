@@ -71,9 +71,9 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/openshift/rosa/releases/download/v1.2.39/rosa-linux-amd64 \
-  && install -Dm755 rosa-linux-amd64 /usr/local/bin/rosa \
-  && rm rosa-linux-amd64 \
+  && curl -LO https://github.com/openshift/rosa/releases/download/v1.2.40/rosa_Linux_x86_64.tar.gz \
+  && tar xzvf rosa_Linux_x86_64.tar.gz -C /usr/local/bin/ rosa \
+  && rm rosa_Linux_x86_64.tar.gz \
   && rosa version \
   && :
 
@@ -87,7 +87,7 @@ RUN : \
 
 RUN : \
   && curl -LO https://github.com/openshift/osdctl/releases/download/v0.29.0/osdctl_0.29.0_Linux_x86_64.tar.gz \
-  && tar xzvf osdctl_0.29.0_Linux_x86_64.tar.gz -C /usr/local/bin/ \
+  && tar xzvf osdctl_0.29.0_Linux_x86_64.tar.gz -C /usr/local/bin/ osdctl \
   && rm -rf osdctl_0.29.0_Linux_x86_64.tar.gz \
   && osdctl version \
   && :
