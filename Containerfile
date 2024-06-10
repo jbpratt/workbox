@@ -56,6 +56,13 @@ RUN : \
   && :
 
 RUN : \
+  && curl -LO https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/pipelines/latest/tkn-linux-amd64.tar.gz \
+  && tar xzvf tkn-linux-amd64.tar.gz -C /usr/local/bin/ --no-same-owner opc tkn \
+  && rm -rf tkn-linux-amd64.tar.gz \
+  && opc version \
+  && :
+
+RUN : \
   && curl -LO https://github.com/openshift-online/ocm-cli/releases/download/v0.1.73/ocm-linux-amd64 \
   && install -Dm755 ocm-linux-amd64 /usr/local/bin/ocm \
   && rm ocm-linux-amd64 \
