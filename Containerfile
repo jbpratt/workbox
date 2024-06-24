@@ -78,7 +78,7 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/openshift/rosa/releases/download/v1.2.40/rosa_Linux_x86_64.tar.gz \
+  && curl -LO https://github.com/openshift/rosa/releases/download/v1.2.41/rosa_Linux_x86_64.tar.gz \
   && tar xzvf rosa_Linux_x86_64.tar.gz -C /usr/local/bin/ rosa \
   && rm rosa_Linux_x86_64.tar.gz \
   && rosa version \
