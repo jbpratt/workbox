@@ -50,7 +50,7 @@ RUN : \
 
 RUN : \
   && curl -LO https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/opm-linux.tar.gz \
-  && tar xzvf opm-linux.tar.gz -C /usr/local/bin/ \
+  && tar xzvf opm-linux.tar.gz -C /usr/local/bin/ opm-rhel8 --transform='s/-rhel8//g' \
   && rm -rf opm-linux.tar.gz \
   && opm version \
   && :
