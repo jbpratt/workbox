@@ -24,6 +24,7 @@ RUN : \
     neovim \
     openssl \
     parallel \
+    pinentry \
     python3-devel \
     ripgrep \
     shfmt \
