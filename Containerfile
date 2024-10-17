@@ -93,9 +93,9 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/openshift/osdctl/releases/download/v0.37.0/osdctl_0.29.0_Linux_x86_64.tar.gz \
-  && tar xzvf osdctl_0.29.0_Linux_x86_64.tar.gz -C /usr/local/bin/ osdctl \
-  && rm -rf osdctl_0.29.0_Linux_x86_64.tar.gz \
+  && curl -LO https://github.com/openshift/osdctl/releases/download/v0.37.0/osdctl_0.37.0_Linux_x86_64.tar.gz \
+  && tar xzvf osdctl_0.37.0_Linux_x86_64.tar.gz -C /usr/local/bin/ osdctl \
+  && rm -rf osdctl_0.37.0_Linux_x86_64.tar.gz \
   && osdctl version \
   && :
 
