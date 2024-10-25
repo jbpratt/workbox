@@ -64,7 +64,7 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/openshift-online/ocm-cli/releases/download/v0.1.76/ocm-linux-amd64 \
+  && curl -LO https://github.com/openshift-online/ocm-cli/releases/download/v1.0.2/ocm-linux-amd64 \
   && install -Dm755 ocm-linux-amd64 /usr/local/bin/ocm \
   && rm ocm-linux-amd64 \
   && ocm version \
