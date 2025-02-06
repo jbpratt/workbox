@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-toolbox:41
+FROM registry.fedoraproject.org/fedora-toolbox:43
 
 RUN : \
   && dnf update -y \
