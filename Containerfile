@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora-toolbox:41
+FROM registry.fedoraproject.org/fedora-toolbox:42
 
 RUN : \
   && dnf update -y \
@@ -91,13 +91,6 @@ RUN : \
   && make install \
   && popd \
   && rm -rf git-number/ \
-  && :
-
-RUN : \
-  && curl -LO https://github.com/openshift/osdctl/releases/download/v0.38.0/osdctl_0.38.0_Linux_x86_64.tar.gz \
-  && tar xzvf osdctl_0.38.0_Linux_x86_64.tar.gz -C /usr/local/bin/ osdctl \
-  && rm -rf osdctl_0.38.0_Linux_x86_64.tar.gz \
-  && osdctl version \
   && :
 
 RUN : \
