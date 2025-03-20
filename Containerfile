@@ -106,6 +106,7 @@ RUN : \
   && ln -s /usr/local/bin/host-spawn /usr/libexec/openvpn \
   && ln -s /usr/local/bin/host-spawn /usr/libexec/kind \
   && ln -s /usr/local/bin/host-spawn /usr/libexec/sshuttle \
+  && ln -s /usr/local/bin/host-spawn /usr/libexec/ramalama \
   && :
 
 ENV PATH="/usr/libexec/toolbox:/usr/libexec:$PATH"
