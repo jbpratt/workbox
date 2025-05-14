@@ -1,12 +1,14 @@
 FROM registry.fedoraproject.org/fedora-toolbox:42
 
 RUN : \
+  && dnf copr enable -y @rhel-lightspeed/command-line-assistant \
   && dnf update -y \
   && dnf install -y \
     ShellCheck \
     automake \
     bat \
     cmake \
+    command-line-assistant \
     dnf-plugins-core \
     fd-find \
     fzf \
