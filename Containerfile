@@ -96,6 +96,16 @@ RUN : \
   && :
 
 RUN : \
+  && npm install -g @google/gemini-cli \
+  && gemini --version \
+  && :
+
+RUN : \
+  && npm install -g @sourcegraph/amp \
+  && amp --version \
+  && :
+
+RUN : \
   && mkdir /usr/libexec/toolbox \
   && ln -s /usr/local/bin/host-spawn /usr/libexec/flatpak \
   && ln -s /usr/local/bin/host-spawn /usr/libexec/virsh \
