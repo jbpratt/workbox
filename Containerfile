@@ -111,6 +111,11 @@ RUN : \
   && :
 
 RUN : \
+  && npm install -g @charmland/crush \
+  && crush --version \
+  && :
+
+RUN : \
   && mkdir /usr/libexec/toolbox \
   && ln -s /usr/local/bin/host-spawn /usr/libexec/flatpak \
   && ln -s /usr/local/bin/host-spawn /usr/libexec/virsh \
