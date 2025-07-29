@@ -101,8 +101,21 @@ RUN : \
   && :
 
 RUN : \
+  && npm install -g @anthropic-ai/claude-code \
+  && claude --version \
+  && :
+
+RUN : \
   && npm install -g @sourcegraph/amp \
   && amp --version \
+  && :
+
+RUN : \
+  && curl -LO https://github.com/charmbracelet/crush/releases/download/v0.1.3/crush_0.1.3_Linux_x86_64.tar.gz \
+  && tar xzvf crush_0.1.3_Linux_x86_64.tar.gz -C /usr/local/bin crush_0.1.3_Linux_x86_64/crush \
+  && chmod +x /usr/local/bin/crush \
+  && rm -rf crush_* \
+  && crush --version \
   && :
 
 RUN : \
