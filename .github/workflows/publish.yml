@@ -26,8 +26,6 @@ jobs:
       with:
         image: ${{ env.IMAGE_NAME }}
         tags: ${{ env.IMAGE_TAG }}
-        extra-args: |
-          --squash
         oci: true
         dockerfiles: |
           ./Containerfile
