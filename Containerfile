@@ -25,6 +25,7 @@ RUN : \
     openssl \
     parallel \
     pinentry \
+    podman-compose \
     python3-devel \
     ripgrep \
     shfmt \
