@@ -22,6 +22,7 @@ RUN : \
     lsd \
     make \
     neovim \
+    npm \
     openssl \
     parallel \
     pinentry \
@@ -29,6 +30,8 @@ RUN : \
     python3-devel \
     ripgrep \
     shfmt \
+    skopeo \
+    --exclude=mercurial,subversion \
   && dnf clean all \
   && :
 
@@ -114,20 +117,13 @@ RUN : \
   && crush --version \
   && :
 
-RUN : \
-  && mkdir /usr/libexec/toolbox \
-  && ln -s /usr/local/bin/host-spawn /usr/libexec/flatpak \
-  && ln -s /usr/local/bin/host-spawn /usr/libexec/virsh \
-  && ln -s /usr/local/bin/host-spawn /usr/libexec/podman \
-  && ln -s /usr/local/bin/host-spawn /usr/libexec/skopeo \
-  && ln -s /usr/local/bin/host-spawn /usr/libexec/virt-install \
-  && ln -s /usr/local/bin/host-spawn /usr/libexec/rpm-ostree \
-  && ln -s /usr/local/bin/host-spawn /usr/libexec/ostree \
-  && ln -s /usr/local/bin/host-spawn /usr/libexec/nmcli \
-  && ln -s /usr/local/bin/host-spawn /usr/libexec/openvpn \
-  && ln -s /usr/local/bin/host-spawn /usr/libexec/kind \
-  && ln -s /usr/local/bin/host-spawn /usr/libexec/sshuttle \
-  && ln -s /usr/local/bin/host-spawn /usr/libexec/ramalama \
-  && :
+COPY host-runner /usr/local/bin/host-runner
 
-ENV PATH="/usr/libexec/toolbox:/usr/libexec:$PATH"
+RUN : \
+  && ln -s host-runner /usr/local/bin/flatpak \
+  && ln -s host-runner /usr/local/bin/podman \
+  && ln -s host-runner /usr/local/bin/skopeo \
+  && ln -s host-runner /usr/local/bin/rpm-ostree \
+  && ln -s host-runner /usr/local/bin/sshuttle \
+  && ln -s host-runner /usr/local/bin/systemctl \
+  && :
