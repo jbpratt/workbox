@@ -120,6 +120,8 @@ COPY host-runner /usr/local/bin/host-runner
 
 RUN : \
   && ln -s host-runner /usr/local/bin/flatpak \
+  && ln -s host-runner /usr/local/bin/firefox \
+  && ln -s host-runner /usr/local/bin/xdg-open \
   && ln -s host-runner /usr/local/bin/podman \
   && ln -s host-runner /usr/local/bin/rpm-ostree \
   && ln -s host-runner /usr/local/bin/sshuttle \
