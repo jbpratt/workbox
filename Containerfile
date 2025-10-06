@@ -122,7 +122,6 @@ COPY host-runner /usr/local/bin/host-runner
 RUN : \
   && ln -s host-runner /usr/local/bin/flatpak \
   && ln -s host-runner /usr/local/bin/podman \
-  && ln -s host-runner /usr/local/bin/skopeo \
   && ln -s host-runner /usr/local/bin/rpm-ostree \
   && ln -s host-runner /usr/local/bin/sshuttle \
   && ln -s host-runner /usr/local/bin/systemctl \
