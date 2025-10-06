@@ -26,12 +26,11 @@ RUN : \
     openssl \
     parallel \
     pinentry \
-    podman-compose \
     python3-devel \
     ripgrep \
     shfmt \
     skopeo \
-    --exclude=mercurial,subversion,podman \
+    --exclude=mercurial,subversion \
   && dnf clean all \
   && :
 
