@@ -31,7 +31,7 @@ RUN : \
     ripgrep \
     shfmt \
     skopeo \
-    --exclude=mercurial,subversion \
+    --exclude=mercurial,subversion,podman \
   && dnf clean all \
   && :
 
