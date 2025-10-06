@@ -4,6 +4,7 @@ RUN : \
   && dnf update -y \
   && dnf install -y \
     ShellCheck \
+    alsa-lib \
     automake \
     bat \
     cmake \
@@ -16,6 +17,7 @@ RUN : \
     git \
     gojq \
     golang \
+    gtk3-devel \
     htop \
     jq \
     kernel-devel \
@@ -23,6 +25,7 @@ RUN : \
     make \
     neovim \
     npm \
+    nss \
     openssl \
     parallel \
     pinentry \
@@ -30,6 +33,7 @@ RUN : \
     ripgrep \
     shfmt \
     skopeo \
+    xorg-x11-server-Xvfb \
     --exclude=mercurial,subversion \
   && dnf clean all \
   && :
