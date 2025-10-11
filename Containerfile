@@ -123,6 +123,10 @@ RUN : \
   && crush --version \
   && :
 
+RUN : \
+  && npm install -g typescript-language-server \
+  && :
+
 COPY host-runner /usr/local/bin/host-runner
 
 RUN : \
