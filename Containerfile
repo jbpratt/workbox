@@ -21,11 +21,13 @@ RUN : \
     htop \
     jq \
     kernel-devel \
+    libpq-devel \
     lsd \
     make \
     neovim \
     npm \
     nss \
+    openldap-devel \
     openssl \
     parallel \
     pinentry \
@@ -33,6 +35,7 @@ RUN : \
     ripgrep \
     shfmt \
     skopeo \
+    uv \
     xorg-x11-server-Xvfb \
     --exclude=mercurial,subversion \
   && dnf clean all \
