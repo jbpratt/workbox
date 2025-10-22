@@ -127,6 +127,16 @@ RUN : \
   && npm install -g typescript-language-server \
   && :
 
+RUN : \
+  && curl -O -L "https://github.com/sigstore/cosign/releases/latest/download/cosign-linux-amd64" \
+  && mv cosign-linux-amd64 /usr/local/bin/cosign \
+  && chmod +x /usr/local/bin/cosign \
+  && :
+
+RUN : \
+  && curl -sSfL https://get.anchore.io/syft | sh -s -- -b /usr/local/bin \
+  && :
+
 COPY host-runner /usr/local/bin/host-runner
 
 RUN : \
