@@ -114,11 +114,6 @@ RUN : \
   && :
 
 RUN : \
-  && npm install -g @sourcegraph/amp \
-  && amp --version \
-  && :
-
-RUN : \
   && npm install -g @charmland/crush \
   && crush --version \
   && :
