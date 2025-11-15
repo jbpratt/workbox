@@ -74,28 +74,6 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/openshift-online/ocm-cli/releases/download/v1.0.8/ocm-linux-amd64 \
-  && install -Dm755 ocm-linux-amd64 /usr/local/bin/ocm \
-  && rm ocm-linux-amd64 \
-  && ocm version \
-  && :
-
-RUN : \
-  && curl -LO https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip \
-  && unzip awscli-exe-linux-x86_64.zip \
-  && ./aws/install \
-  && rm -rf aws/ awscli-exe-linux-x86_64.zip \
-  && aws --version \
-  && :
-
-RUN : \
-  && curl -LO https://github.com/openshift/rosa/releases/download/v1.2.57/rosa_Linux_x86_64.tar.gz \
-  && tar xzvf rosa_Linux_x86_64.tar.gz -C /usr/local/bin/ rosa \
-  && rm rosa_Linux_x86_64.tar.gz \
-  && rosa version \
-  && :
-
-RUN : \
   && git clone https://github.com/holygeek/git-number.git \
   && pushd git-number \
   && make install \
