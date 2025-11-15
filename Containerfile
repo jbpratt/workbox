@@ -47,12 +47,6 @@ RUN : \
   && :
 
 RUN : \
-  && curl -LO https://github.com/1player/host-spawn/releases/download/v1.6.2/host-spawn-x86_64 \
-  && install -Dm755 host-spawn-x86_64 /usr/local/bin/host-spawn \
-  && host-spawn --version \
-  && :
-
-RUN : \
   && curl -LO https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz \
   && tar xzvf openshift-client-linux.tar.gz -C /usr/local/bin/ \
   && rm -rf openshift-client-linux.tar.gz \
