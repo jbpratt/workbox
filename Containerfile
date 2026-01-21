@@ -22,6 +22,7 @@ RUN : \
     jq \
     kernel-devel \
     libpq-devel \
+    libvirt-devel \
     lsd \
     make \
     neovim \
@@ -36,6 +37,8 @@ RUN : \
     shfmt \
     skopeo \
     uv \
+    vagrant \
+    vagrant-libvirt \
     xorg-x11-server-Xvfb \
     --exclude=mercurial,subversion \
   && dnf clean all \
@@ -106,4 +109,5 @@ RUN : \
   && ln -s host-runner /usr/local/bin/rpm-ostree \
   && ln -s host-runner /usr/local/bin/sshuttle \
   && ln -s host-runner /usr/local/bin/systemctl \
+  && ln -s host-runner /usr/local/bin/kind \
   && :
