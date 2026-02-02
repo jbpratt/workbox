@@ -84,8 +84,8 @@ RUN : \
   && :
 
 RUN : \
-  && npm install -g @anthropic-ai/claude-code \
-  && claude --version \
+  && curl -fsSL https://claude.ai/install.sh | bash \
+  && ~/.local/bin/claude --version \
   && :
 
 RUN : \
