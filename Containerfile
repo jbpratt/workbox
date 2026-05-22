@@ -79,11 +79,6 @@ RUN : \
   && :
 
 RUN : \
-  && npm install -g @google/gemini-cli \
-  && gemini --version \
-  && :
-
-RUN : \
   && curl -fsSL https://claude.ai/install.sh | bash \
   && ~/.local/bin/claude --version \
   && :
@@ -96,6 +91,12 @@ RUN : \
 
 RUN : \
   && curl -sSfL https://get.anchore.io/syft | sh -s -- -b /usr/local/bin \
+  && :
+
+RUN : \
+  && curl -O -L https://acli.atlassian.com/linux/latest/acli_linux_amd64/acli \
+  && mv acli /usr/local/bin/acli \
+  && chmod +x /usr/local/bin/acli \
   && :
 
 COPY host-runner /usr/local/bin/host-runner
