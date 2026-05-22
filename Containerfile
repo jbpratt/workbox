@@ -34,7 +34,6 @@ RUN : \
     pinentry \
     python3-devel \
     ripgrep \
-    shfmt \
     skopeo \
     uv \
     vagrant \
