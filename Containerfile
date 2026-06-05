@@ -82,7 +82,6 @@ RUN : \
 RUN : \
   && curl -LO https://mirror.openshift.com/pub/openshift-v4/clients/rosa/latest/rosa-linux \
   && install -Dm755 rosa-linux /usr/local/bin/rosa \
-  && rm rosa_Linux_x86_64.tar.gz \
   && rosa version \
   && :
 
