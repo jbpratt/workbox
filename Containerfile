@@ -129,4 +129,5 @@ RUN : \
   && ln -s host-runner /usr/local/bin/kind \
   && ln -s host-runner /usr/local/bin/kinit \
   && ln -s host-runner /usr/local/bin/klist \
+  && ln -s host-runner /usr/local/bin/openshell \
   && :
