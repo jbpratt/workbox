@@ -7,6 +7,7 @@ RUN : \
     alsa-lib \
     automake \
     bat \
+    clang \
     cmake \
     dnf-plugins-core \
     fd-find \
@@ -21,6 +22,7 @@ RUN : \
     htop \
     jq \
     kernel-devel \
+    krb5-devel \
     libpq-devel \
     libvirt-devel \
     lsd \
@@ -110,4 +112,6 @@ RUN : \
   && ln -s host-runner /usr/local/bin/sshuttle \
   && ln -s host-runner /usr/local/bin/systemctl \
   && ln -s host-runner /usr/local/bin/kind \
+  && ln -s host-runner /usr/local/bin/kinit \
+  && ln -s host-runner /usr/local/bin/klist \
   && :
