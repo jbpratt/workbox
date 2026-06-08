@@ -51,6 +51,13 @@ RUN : \
   && :
 
 RUN : \
+  && dnf config-manager addrepo --from-repofile=https://packages.cloud.google.com/yum/repos/cloud-sdk-el9-x86_64 \
+  && dnf install -y google-cloud-cli \
+  && dnf clean all \
+  && gcloud version \
+  && :
+
+RUN : \
   && curl -LO https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz \
   && tar xzvf openshift-client-linux.tar.gz -C /usr/local/bin/ \
   && rm -rf openshift-client-linux.tar.gz \
