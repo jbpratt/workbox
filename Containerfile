@@ -20,9 +20,12 @@ RUN : \
     golang \
     gtk3-devel \
     htop \
+    ipa-admintools \
+    ipa-client \
     jq \
     kernel-devel \
     krb5-devel \
+    krb5-workstation \
     libpq-devel \
     libvirt-devel \
     lsd \
@@ -35,8 +38,11 @@ RUN : \
     parallel \
     pinentry \
     python3-devel \
+    python3-libselinux \
     ripgrep \
     skopeo \
+    sqlite3 \
+    tmux \
     uv \
     vagrant \
     vagrant-libvirt \
