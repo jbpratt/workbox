@@ -12,7 +12,7 @@ jobs:
     name: Build and push workbox image
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
 
     - name: Log in to ghcr.io
       uses: redhat-actions/podman-login@v1
