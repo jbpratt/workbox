@@ -1,11 +1,14 @@
-name: Build and publish latest image
+name: Build and publish image
 on:
   push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 6 * * 1"
   workflow_dispatch:
 
 env:
   IMAGE_NAME: ghcr.io/jbpratt/toolbox/workbox
-  IMAGE_TAG: latest
 
 jobs:
   build-and-publish:
@@ -14,24 +17,31 @@ jobs:
     steps:
     - uses: actions/checkout@v6
 
-    - name: Log in to ghcr.io
-      uses: redhat-actions/podman-login@v1
-      with:
-        username: ${{ github.actor }}
-        password: ${{ secrets.GITHUB_TOKEN }}
-        registry: ghcr.io
+    - name: Date tag
+      id: date
+      run: echo "tag=$(date -u +%F)" >> "$GITHUB_OUTPUT"
 
     - name: Buildah Action
       id: build-image
       uses: redhat-actions/buildah-build@v2
       with:
         image: ${{ env.IMAGE_NAME }}
-        tags: ${{ env.IMAGE_TAG }}
+        tags: latest ${{ steps.date.outputs.tag }}
         oci: true
         dockerfiles: |
           ./Containerfile
 
+    # Pull requests build only; images come from main.
+    - name: Log in to ghcr.io
+      if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+      uses: redhat-actions/podman-login@v1
+      with:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: ghcr.io
+
     - name: Push to ghcr
+      if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
       uses: redhat-actions/push-to-registry@v2
       with:
         image: ${{ steps.build-image.outputs.image }}
