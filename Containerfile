@@ -11,6 +11,7 @@ RUN : \
     cmake \
     dnf-plugins-core \
     fd-find \
+    ffmpeg-free \
     fzf \
     gcc \
     gcc-c++ \
@@ -37,6 +38,8 @@ RUN : \
     openssl \
     parallel \
     pinentry \
+    podman-compose \
+    podman-remote \
     python3-devel \
     python3-libselinux \
     ripgrep \
@@ -57,7 +60,11 @@ RUN : \
   && :
 
 RUN : \
-  && dnf config-manager addrepo --from-repofile=https://packages.cloud.google.com/yum/repos/cloud-sdk-el9-x86_64 \
+  && dnf config-manager addrepo --id=google-cloud-cli \
+    --set=name="Google Cloud CLI" \
+    --set=baseurl=https://packages.cloud.google.com/yum/repos/cloud-sdk-el9-x86_64 \
+    --set=gpgcheck=1 \
+    --set=gpgkey=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg \
   && dnf install -y google-cloud-cli \
   && dnf clean all \
   && gcloud version \
@@ -143,3 +150,9 @@ RUN : \
   && ln -s host-runner /usr/local/bin/klist \
   && ln -s host-runner /usr/local/bin/openshell \
   && :
+
+# The host home is /var/home/<user>, and the toolbox has its own /var.
+RUN ln -s /home /var/home
+
+# Last layer: the build time doctor/toolbox-drift reads in the wheelhouse.
+RUN date -u +%Y-%m-%dT%H:%M:%SZ > /etc/workbox-build
