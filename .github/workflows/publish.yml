@@ -34,7 +34,7 @@ jobs:
     # Pull requests build only; images come from main.
     - name: Log in to ghcr.io
       if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
-      uses: redhat-actions/podman-login@v1
+      uses: redhat-actions/podman-login@v2
       with:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
