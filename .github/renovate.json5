@@ -20,5 +20,15 @@
       "depNameTemplate": "{{org}}/{{repo}}"
     }
   ],
-  "packageRules": []
+  "packageRules": [
+    {
+      // fedora-toolbox:N+1 is rawhide until Fedora N+1 ships, and renovate
+      // cannot tell. Stay on the stable release; bump the base by hand after
+      // a release, or approve it from the dashboard. Never the rawhide tag.
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["registry.fedoraproject.org/fedora-toolbox"],
+      "allowedVersions": "/^[0-9]+$/",
+      "dependencyDashboardApproval": true
+    }
+  ]
 }
