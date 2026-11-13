@@ -23,7 +23,7 @@ jobs:
 
     - name: Buildah Action
       id: build-image
-      uses: redhat-actions/buildah-build@v2
+      uses: redhat-actions/buildah-build@v3
       with:
         # Full-name tags: IMAGE_NAME already carries the registry.
         tags: ${{ env.IMAGE_NAME }}:latest ${{ env.IMAGE_NAME }}:${{ steps.date.outputs.tag }}
